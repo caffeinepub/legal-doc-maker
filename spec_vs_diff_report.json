@@ -1,0 +1,55 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-25T05:53:14.184Z",
+  "summary": "The diff shows modifications to DocumentHistoryPage.tsx (adding LoginPrompt for unauthenticated users), a frontend file summary describing Header.tsx with login/logout via Internet Identity, LoginPrompt.tsx, and ProfileSetupModal.tsx. However, no actual source code for Header.tsx, LoginPrompt.tsx, or ProfileSetupModal.tsx is included in the diff — only their descriptions in the summary file. The diff does not provide verifiable evidence that these components were added or modified correctly.",
+  "missing_requirements": [
+    {
+      "id": "REQ-1",
+      "requirement": "The Header component must display a login button for unauthenticated users that triggers the Internet Identity flow, and show the user's profile/logout options when authenticated.",
+      "reason": "Header.tsx is described in the file summary but its actual source code is not present in the diff. No direct evidence of the login button, profile display, or logout option being implemented.",
+      "evidence": [
+        "frontend-file-summaries.txt"
+      ]
+    },
+    {
+      "id": "REQ-1",
+      "requirement": "After successful login, the Header shows the user's profile name and a logout option.",
+      "reason": "No actual code for Header.tsx is included in the diff to verify profile name display or logout option.",
+      "evidence": [
+        "frontend-file-summaries.txt"
+      ]
+    },
+    {
+      "id": "REQ-1",
+      "requirement": "Logging out returns the user to the unauthenticated state.",
+      "reason": "No actual code for Header.tsx is included in the diff to verify logout functionality.",
+      "evidence": [
+        "frontend-file-summaries.txt"
+      ]
+    },
+    {
+      "id": "REQ-1",
+      "requirement": "The LoginPrompt component shown on document selection and history pages correctly triggers Internet Identity login.",
+      "reason": "LoginPrompt.tsx source code is not in the diff (only described in summary). DocumentSelectionPage.tsx actual code is not provided showing LoginPrompt usage.",
+      "evidence": [
+        "frontend-file-summaries.txt"
+      ]
+    },
+    {
+      "id": "REQ-1",
+      "requirement": "The ProfileSetupModal appears after first login to collect the user's full name.",
+      "reason": "ProfileSetupModal.tsx source code is not in the diff. Only a description exists in the file summary; no verifiable implementation evidence.",
+      "evidence": [
+        "frontend-file-summaries.txt"
+      ]
+    }
+  ],
+  "hallucinated_features": [],
+  "confidence": 0.45,
+  "changed_files": [
+    "frontend-file-summaries.txt",
+    "frontend/src/pages/DocumentHistoryPage.tsx",
+    "project_state.json"
+  ]
+}

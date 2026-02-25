@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "Legal document maker web app with Internet Identity authentication (passkeys, Google, Apple, or Microsoft sign-in).",
+  "architectural_notes": [
+    "Authentication: Internet Identity only (passkeys, Google, Apple, Microsoft) — no email/password login"
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-add-internet-identity-authentication-passkeys-google-apple-or-microsoft-sign-in-to-the-legal-document-maker-app-the-header-component-must-display-a-login-button-for-unauthenticated-users-that-triggers-the-internet-identity-flow-and-show-the-user-s-profile-logout-options-when-authenticated",
+      "title": "Add Internet Identity authentication (passkeys, Google, Apple, or Microsoft sign-in) to the legal document maker app. The Header component must display a login button for unauthenticated users that triggers the Internet Identity flow, and show the user's profile/logout options when authenticated.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Add Internet Identity login (passkeys, Google, Apple, or Microsoft) to the legal doc maker",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Legal Doc Maker",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

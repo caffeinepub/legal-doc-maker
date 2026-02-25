@@ -1,0 +1,43 @@
+{
+  "kind": "build_request",
+  "title": "Add Internet Identity login to legal doc maker",
+  "projectName": "Legal Doc Maker",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Add Internet Identity authentication (passkeys, Google, Apple, or Microsoft sign-in) to the legal document maker app. The Header component must display a login button for unauthenticated users that triggers the Internet Identity flow, and show the user's profile/logout options when authenticated.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-6",
+          "msg-8"
+        ],
+        "quotes": [
+          "Sure",
+          "Would you like me to add Internet Identity login (passkeys, Google, Apple, or Microsoft) to your legal doc maker?"
+        ]
+      },
+      "acceptanceCriteria": [
+        "An unauthenticated user sees a login button in the Header that launches Internet Identity",
+        "After successful login, the Header shows the user's profile name and a logout option",
+        "Logging out returns the user to the unauthenticated state",
+        "The LoginPrompt component shown on document selection and history pages correctly triggers Internet Identity login",
+        "The ProfileSetupModal appears after first login to collect the user's full name"
+      ]
+    }
+  ],
+  "constraints": [
+    "Authentication must use Internet Identity only — no email/password or other third-party providers",
+    "Do not modify files under frontend/src/hooks/useInternetIdentity.ts or frontend/src/hooks/useActor.ts"
+  ],
+  "nonGoals": [
+    "Email and password authentication",
+    "Any third-party OAuth providers outside of what Internet Identity supports",
+    "Changes to document generation or template logic"
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

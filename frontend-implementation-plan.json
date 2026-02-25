@@ -1,0 +1,55 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Add Internet Identity Authentication to Legal Doc Maker",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Add Internet Identity authentication with login/logout UI in Header, profile setup modal for first-time users, and login prompts on protected pages",
+      "acceptanceCriteria": [
+        "An unauthenticated user sees a login button in the Header that launches Internet Identity",
+        "After successful login, the Header shows the user's profile name and a logout option",
+        "Logging out returns the user to the unauthenticated state",
+        "The LoginPrompt component shown on document selection and history pages correctly triggers Internet Identity login",
+        "The ProfileSetupModal appears after first login to collect the user's full name"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/Header.tsx",
+          "operation": "modify",
+          "description": "Update the Header component to integrate Internet Identity authentication. Replace the current auth dropdown with a login button for unauthenticated users that triggers useInternetIdentity().login(). For authenticated users, display the user's profile name (fetched via getCallerUserProfile) and show logout option that calls clear() and invalidates all queries. Use the authorization component to handle authentication state. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/ProfileSetupModal.tsx",
+          "operation": "modify",
+          "description": "Update ProfileSetupModal to properly integrate with Internet Identity authentication flow. Ensure the modal appears after successful login only when the user has no profile (getCallerUserProfile returns null). Use the custom useGetCallerUserProfile hook pattern from the authorization component to prevent modal flash by checking actorFetching state. The modal should call saveCallerUserProfile when the user submits their name. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/LoginPrompt.tsx",
+          "operation": "modify",
+          "description": "Update LoginPrompt component to use Internet Identity authentication via useInternetIdentity hook. Replace any existing login logic with the login() method from useInternetIdentity. Show appropriate loading state during login (loginStatus === 'logging-in'). Handle login errors gracefully with user-friendly error messages. Use the authorization component to support Internet Identity login flow. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/DocumentSelectionPage.tsx",
+          "operation": "modify",
+          "description": "Update DocumentSelectionPage to display LoginPrompt component for unauthenticated users. Use useInternetIdentity to check authentication state (!!identity). Show the hero section and template cards only to authenticated users. Ensure smooth transition between authenticated and unauthenticated states without layout shifts."
+        },
+        {
+          "path": "frontend/src/pages/DocumentHistoryPage.tsx",
+          "operation": "modify",
+          "description": "Update DocumentHistoryPage to display LoginPrompt component for unauthenticated users. Use useInternetIdentity to check authentication state (!!identity). Show the 'Coming Soon' placeholder only to authenticated users. Ensure consistent authentication check pattern with DocumentSelectionPage."
+        },
+        {
+          "path": "frontend/src/hooks/useQueries.ts",
+          "operation": "modify",
+          "description": "Add or update useGetCallerUserProfile hook following the authorization component's pattern to prevent profile setup modal flash. The hook should return custom state that properly reflects actor dependency with isLoading combining actorFetching and query.isLoading, and isFetched checking both actor availability and query.isFetched. Ensure enabled flag checks both actor availability and actorFetching state. Add useSaveCallerUserProfile mutation hook that calls saveCallerUserProfile and invalidates the currentUserProfile query. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Update App component to properly wire ProfileSetupModal with authentication state. Use useInternetIdentity to get authentication status and useGetCallerUserProfile to fetch user profile. Show ProfileSetupModal only when isAuthenticated && !profileLoading && isFetched && userProfile === null to prevent flash. Ensure QueryClient is configured to clear cache on logout."
+        }
+      ]
+    }
+  ]
+}

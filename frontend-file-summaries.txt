@@ -1,0 +1,23 @@
+{
+  "frontend/src/App.tsx": "Main app component with TanStack Router setup; moves ProfileSetupModal inside the root route layout so it has access to router context, and wraps everything in ThemeProvider and QueryClientProvider.",
+  "frontend/src/hooks/useQueries.ts": "React Query hooks for all backend operations including profile management, document generation, content/metadata retrieval, and finalization — with proper error handling and cache invalidation.",
+  "frontend/src/pages/DocumentSelectionPage.tsx": "Landing page that displays all available templates from the shared templates lib as cards; clicking a card navigates to the form page via TanStack Router.",
+  "frontend/src/pages/DocumentFormPage.tsx": "Dynamic form page that uses local template data (no backend fetch), renders fields for each placeholder, validates inputs, calls generateDocumentBlob, and navigates to the preview page on success.",
+  "frontend/src/pages/DocumentPreviewPage.tsx": "Document preview page that fetches content and metadata from the backend, displays the document, and provides working Download and Finalize buttons with error feedback.",
+  "frontend/src/pages/DocumentHistoryPage.tsx": "Document history page that shows a LoginPrompt component for unauthenticated users (with back navigation and page header), and a \"Coming Soon\" placeholder card with a create new document button for authenticated users.",
+  "frontend/src/components/Layout.tsx": "Main layout wrapper component providing consistent header and footer across all pages with flex layout for sticky footer.",
+  "frontend/src/components/Header.tsx": "Application header with logo, navigation links, and login/logout button using Internet Identity; all navigation uses useNavigate from TanStack Router.",
+  "frontend/src/components/Footer.tsx": "Footer component with legal disclaimer, copyright notice, and attribution link to caffeine.ai with UTM tracking.",
+  "frontend/src/components/HeroSection.tsx": "Hero section component featuring the legal icon asset, headline, description, and key feature highlights for the landing page.",
+  "frontend/src/components/DocumentTypeCard.tsx": "Reusable card component displaying a document template with icon, title, description, category badge, and a properly typed Select button that calls the onSelect callback.",
+  "frontend/src/components/DynamicFormField.tsx": "Smart form field component that renders appropriate input types (text, date, email, textarea) based on placeholder names with validation error display.",
+  "frontend/src/components/DocumentPreview.tsx": "Document content preview component with scrollable area and professional legal document styling using serif fonts and proper spacing.",
+  "frontend/src/components/LoginPrompt.tsx": "Authentication prompt card with security feature highlights and a login button that triggers the Internet Identity flow with loading state.",
+  "frontend/src/components/ProfileSetupModal.tsx": "Modal dialog for first-time user profile setup that collects the user's name, saves it to the backend via mutation, and shows toast feedback; prevents dismissal until completed.",
+  "frontend/src/utils/formValidation.ts": "Form validation utilities including field validation rules, placeholder label formatting, and input type detection based on field names.",
+  "frontend/src/utils/documentGeneration.ts": "Utility that replaces template placeholder tokens with user input values and appends a generation timestamp footer to the document content.",
+  "frontend/src/utils/documentDownload.ts": "Browser-based document download utility creating text file blobs and triggering downloads with proper cleanup.",
+  "frontend/src/index.css": "Global styles with professional legal theme using OKLCH colors, deep navy blue primary, warm grays, serif typography for headings, and custom scrollbar styling.",
+  "frontend/tailwind.config.js": "Tailwind configuration with legal-themed color palette, Merriweather serif font for headings, custom shadows, and extended design tokens.",
+  "frontend/src/lib/templates.ts": "Shared template definitions file containing all 6 legal document templates with their content, placeholders, icons, and metadata — used by both the selection and form pages."
+}
